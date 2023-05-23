@@ -18,11 +18,11 @@ React.useEffect(() => {
         .catch((err) => console.log(err))
     api.getInitialCardsApi()
         .then((cardData) => {
-            getCards(cardData.map((data) => ({
-                likes: data.likes,
-                name: data.name,
-                link: data.link,
-                cardId: data._id,
+            getCards(cardData.map((item) => ({
+                likes: item.likes,
+                name: item.name,
+                link: item.link,
+                cardId: item._id,
                 }))
             )
         })
