@@ -74,7 +74,7 @@ class Api {
     }
 }
 
-const api = new Api({
+export const api = new Api({
     url: "https://mesto.nomoreparties.co/v1/cohort-65",
     headers: {
         "Content-Type": "application/json",
@@ -82,4 +82,4 @@ const api = new Api({
     },
 });
 
-export default api;
+// export default api;
