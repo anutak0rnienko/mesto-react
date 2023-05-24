@@ -35,9 +35,9 @@ export default function App() {
                 <PopupWithForm
                     isOpen={isEditProfilePopupOpen}
                     onClose={closeAllPopups}
-                    name={"edit-profile"}
-                    title={"Редактировать профиль"}
-                    button={"Сохранить"}
+                    name="edit-profile"
+                    title="Редактировать профиль"
+                    button="Сохранить"
                 >
                     <input
                         id="nameInput"
@@ -65,9 +65,9 @@ export default function App() {
                 <PopupWithForm
                     isOpen={isAddPlacePopupOpen}
                     onClose={closeAllPopups}
-                    name={"add-place"}
-                    title={"Новое место"}
-                    button={"Создать"}
+                    name="add-place"
+                    title="Новое место"
+                    button="Создать"
                 >
                     <input
                         id="textInput"
@@ -93,9 +93,9 @@ export default function App() {
                 <PopupWithForm
                     isOpen={isEditAvatarPopupOpen}
                     onClose={closeAllPopups}
-                    name={"avatar"}
-                    title={"Обновить аватар"}
-                    button={"Сохранить"}
+                    name="avatar"
+                    title="Обновить аватар"
+                    button="Сохранить"
                 >
                     <input
                         id="avatar"
@@ -109,9 +109,9 @@ export default function App() {
                     <span className="popup__form-error popup__form-error-avatar"></span>
                 </PopupWithForm>
                 <PopupWithForm
-                    name={"delete"}
-                    title={"Вы уверены?"}
-                    button={"Да"}
+                    name="delete"
+                    title="Вы уверены?"
+                    button="Да"
                 ></PopupWithForm>
                 <ImagePopup card={selectedCard} onClose={closeAllPopups} />
             </div>

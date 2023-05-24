@@ -1,6 +1,6 @@
 import React from "react";
-import api from "../utils/Api";
 import Card from "./Card";
+import api from "../utils/api";
 
 export default function Main({
     onEditAvatar,
@@ -24,11 +24,11 @@ export default function Main({
         api.getInitialCardsApi()
             .then((cardData) => {
                 getCards(
-                    cardData.map((item) => ({
-                        likes: item.likes,
-                        name: item.name,
-                        link: item.link,
-                        cardId: item._id,
+                    cardData.map(({_id, likes, name, link}) => ({
+                        likes: likes,
+                        name: name,
+                        link: link,
+                        cardId: _id,
                     }))
                 );
             })
