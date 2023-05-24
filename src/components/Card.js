@@ -1,12 +1,17 @@
-import React from 'react';
+import React from "react";
 
 export default function Card(card) {
     function handleCardClick() {
-        card.onCardClick(card)
+        card.onCardClick(card);
     }
     return (
         <article className="element">
-            <img src={card.link} alt={card.name} className="element__image" onClick={handleCardClick}/>
+            <img
+                src={card.link}
+                alt={card.name}
+                className="element__image"
+                onClick={handleCardClick}
+            />
             <div className="element__info">
                 <h2 className="element__text">{card.name}</h2>
                 <button className="element__delete" type="button"></button>
@@ -16,6 +21,5 @@ export default function Card(card) {
                 </div>
             </div>
         </article>
-    )
+    );
 }
-
