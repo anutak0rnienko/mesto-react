@@ -1,11 +1,21 @@
 import React from "react";
+import CurrentUserContext from '../contexts/CurrentUserContext.js';
 
 export default function Card(card) {
+    const currentUser = React.useContext(CurrentUserContext);
+    const isOwn = card.owner._id === currentUser._id;
+
     function handleCardClick() {
         card.onCardClick(card);
     }
+
+    function handleDeleteClick() {
+        card.onCardDelete(card)
+    }
+
     return (
         <article className="element">
+            {isOwn && <button className='button_del' onClick={handleDeleteClick} />} 
             <img
                 src={card.link}
                 alt={card.name}

@@ -5,6 +5,8 @@ import Main from "./Main";
 import Footer from "./Footer.js";
 import ImagePopup from "./ImagePopup";
 import PopupWithForm from "./PopupWithForm";
+import CurrentUserContext from '../contexts/CurrentUserContext.js';
+import api from "../utils/api.js";
 
 export default function App() {
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
@@ -13,6 +15,8 @@ export default function App() {
         React.useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
     const [selectedCard, setSelectedCard] = React.useState(null);
+    const [currentUser, setCurrentUser] = React.useState({});
+    const [cards, setCards] = React.useState([]);
 
     function closeAllPopups() {
         setIsEditProfilePopupOpen(false);
@@ -21,7 +25,18 @@ export default function App() {
         setSelectedCard(null);
     }
 
+    React.useEffect(() => {
+        Promise.all([api.getUserInfoApi(), api.getInitialCardsApi()])
+            .then(([userInfo, cardData]) => {
+                setCurrentUser(userInfo)
+                setCards(cardData)
+            }).catch(err => {
+                console.log(err);
+            });
+    }, [])
+
     return (
+        <CurrentUserContext.Provider value={currentUser}>
         <div className="body">
             <div className="page">
                 <Header />
@@ -30,6 +45,7 @@ export default function App() {
                     onEditProfile={setIsEditProfilePopupOpen}
                     onAddPlace={setIsAddPlacePopupOpen}
                     onCardClick={setSelectedCard}
+                    cards={cards}
                 />
                 <Footer />
                 <PopupWithForm
@@ -116,5 +132,6 @@ export default function App() {
                 <ImagePopup card={selectedCard} onClose={closeAllPopups} />
             </div>
         </div>
+        </CurrentUserContext.Provider>
     );
 }
