@@ -44,20 +44,6 @@ class Api {
         }).then((res) => this._checkError(res));
     }
 
-    putCardLike(cardId) {
-        return fetch(`${this._url}/cards/${cardId}/likes`, {
-            method: "PUT",
-            headers: this._headers,
-        }).then((res) => this._checkError(res));
-    }
-
-    deleteCardLike(cardId) {
-        return fetch(`${this._url}/cards/${cardId}/likes`, {
-            method: "DELETE",
-            headers: this._headers,
-        }).then((res) => this._checkError(res));
-    }
-
     editProfileAvatar(data) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: "PATCH",
@@ -71,6 +57,13 @@ class Api {
             return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`);
+    }
+
+    changeLikeCardStatus(cardId, isLiked) {
+        return fetch(`${this._url}/cards/${cardId}/likes`, {
+            method: `${!isLiked ? "DELETE" : "PUT"}`,
+            headers: this._headers,
+        }).then((res) => this._checkError(res));
     }
 }
 

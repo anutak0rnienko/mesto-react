@@ -7,6 +7,7 @@ export default function PopupWithForm({
     children,
     button,
     onClose,
+    onSubmit,
 }) {
     return (
         <section
@@ -21,7 +22,7 @@ export default function PopupWithForm({
                     onClick={onClose}
                 ></button>
                 <h2 className="popup__title">{title}</h2>
-                <form name={name} className="popup__form">
+                <form name={name} className="popup__form" onSubmit={onSubmit}>
                     {children}
                     <button
                         className="popup__button popup__button_edit"

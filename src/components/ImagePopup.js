@@ -2,9 +2,7 @@ import React from "react";
 
 export default function ImagePopup({ card, onClose }) {
     return (
-        <section
-            className={`popup popup_type_image ${card && "popup_opened" }`}
-        >
+        <section className={`popup popup_type_image ${card && "popup_opened"}`}>
             <div className="popup__images">
                 <figure className="popup__figure">
                     <img

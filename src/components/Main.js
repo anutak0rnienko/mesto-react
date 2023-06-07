@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import api from "../utils/api";
-import CurrentUserContext from '../contexts/CurrentUserContext.js';
+import CurrentUserContext from "../contexts/CurrentUserContext.js";
 
 export default function Main({
     cards,
@@ -9,36 +8,10 @@ export default function Main({
     onEditProfile,
     onAddPlace,
     onCardClick,
-    onCardDelete
+    onCardDelete,
+    onCardLike,
 }) {
-    // const [userName, setUserName] = React.useState("");
-    // const [userDescription, setUserDescription] = React.useState("");
-    // const [userAvatar, setUserAvatar] = React.useState("");
-    // const [cards, getCards] = React.useState([]);
-
     const currentUser = React.useContext(CurrentUserContext);
-
-    // React.useEffect(() => {
-    //     api.getUserInfoApi()
-    //         .then((userInfo) => {
-    //             setUserName(userInfo.name);
-    //             setUserDescription(userInfo.about);
-    //             setUserAvatar(userInfo.avatar);
-    //         })
-    //         .catch((err) => console.log(err));
-    //     api.getInitialCardsApi()
-    //         .then((cardData) => {
-    //             getCards(
-    //                 cardData.map(({_id, likes, name, link}) => ({
-    //                     likes: likes,
-    //                     name: name,
-    //                     link: link,
-    //                     cardId: _id,
-    //                 }))
-    //             );
-    //         })
-    //         .catch((err) => console.log(err));
-    // }, []);
 
     return (
         <main className="main-content">
@@ -89,6 +62,7 @@ export default function Main({
                         owner={card.owner}
                         onCardClick={onCardClick}
                         onCardDelete={onCardDelete}
+                        onCardLike={onCardLike}
                     />
                 ))}
             </section>
