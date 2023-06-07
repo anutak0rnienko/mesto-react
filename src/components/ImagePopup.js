@@ -18,7 +18,7 @@ export default function ImagePopup({ card, onClose }) {
                     className="popup__close popup__close_button_image"
                     type="button"
                     onClick={onClose}
-                ></button>
+                />
             </div>
         </section>
     );

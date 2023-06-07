@@ -8,6 +8,7 @@ export default function PopupWithForm({
     button,
     onClose,
     onSubmit,
+    isLoading
 }) {
     return (
         <section
@@ -25,6 +26,7 @@ export default function PopupWithForm({
                 <form name={name} className="popup__form" onSubmit={onSubmit}>
                     {children}
                     <button
+                        disabled={isLoading}
                         className="popup__button popup__button_edit"
                         type="submit"
                     >
